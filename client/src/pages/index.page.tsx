@@ -32,12 +32,14 @@ const Home = () => {
     e.preventDefault();
     if (!title || !content || !user) return;
 
-    await apiClient.api.private.posts
+    const newPost = await apiClient.api.private.posts
       .$post({ body: { title, content, published: true, authorId: user.id } })
       .catch(returnNull);
+    if (newPost) {
+      setPosts((prevPosts) => [...(prevPosts ?? []), newPost]);
+    }
     setTitle('');
     setContent('');
-    await fetchPosts();
   };
 
   useEffect(() => {
