@@ -1,4 +1,4 @@
-import type { TaskModel, UserModel } from '$/api/@types/models';
+import type { TaskModel, UserModel } from '$/api/@types';
 import { taskModel } from '$/domain/model/taskModel';
 import { s3Repo } from '$/domain/repository/s3Repo';
 import { taskRepo } from '$/domain/repository/taskRepo';
