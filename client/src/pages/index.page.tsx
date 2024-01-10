@@ -36,7 +36,7 @@ const Home = () => {
       .$post({ body: { title, content, published: true, authorId: user.id } })
       .catch(returnNull);
     if (newPost) {
-      setPosts((prevPosts) => [...(prevPosts ?? []), newPost]);
+      setPosts((prevPosts) => [...(prevPosts ?? []), { ...newPost, id: 'temp-id' }]);
     }
     setTitle('');
     setContent('');
