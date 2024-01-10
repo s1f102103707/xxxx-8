@@ -1,12 +1,12 @@
 /* eslint-disable */
-import type * as Types from '../../../@types'
+import type * as Types from '../../../@types';
 
 export type Methods = {
   post: {
-    status: 201
+    status: 201;
     /** User created successfully */
-    resBody: Types.User
+    resBody: Types.User;
     /** User to create */
-    reqBody: Types.User
-  }
-}
+    reqBody: Types.User;
+  };
+};

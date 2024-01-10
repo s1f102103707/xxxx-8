@@ -1,21 +1,21 @@
 /* eslint-disable */
 export type User = {
-  id: string
-  email: string
-  name?: string | null | undefined
-}
+  id: string;
+  email: string;
+  name?: string | null | undefined;
+};
 
 export type Post = {
-  id: string
-  title: string
-  content?: string | null | undefined
-  published: boolean
-  authorId: string
-}
+  id: string;
+  title: string;
+  content?: string | null | undefined;
+  published: boolean;
+  authorId: string;
+};
 
 export type Comment = {
-  id: string
-  text: string
-  postId: string
-  authorId: string
-}
+  id: string;
+  text: string;
+  postId: string;
+  authorId: string;
+};
