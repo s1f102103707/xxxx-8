@@ -30,7 +30,7 @@ const Home = () => {
 
   const createPost = async (e: FormEvent) => {
     e.preventDefault();
-    if (!title || !content) return;
+    if (!title || !content || !user) return;
 
     await apiClient.api.private.posts
       .$post({ body: { title, content, published: true, authorId: user.id } })
