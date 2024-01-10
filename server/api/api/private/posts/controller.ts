@@ -1,17 +1,17 @@
-import { defineController } from 'frourio';
 import { postService } from '$/service/postService';
+import { defineController } from 'frourio';
 
-export default defineController(() => ({
+export default defineController(postService, ({ createPost, updatePost, deletePost }) => ({
   post: async ({ body }) => ({
     status: 201,
-    body: await postService.createPost(body)
+    body: await createPost(body),
   }),
   put: async ({ params, body }) => ({
     status: 200,
-    body: await postService.updatePost(params.postId, body)
+    body: await updatePost(params.postId, body),
   }),
   delete: async ({ params }) => {
-    await postService.deletePost(params.postId);
+    await deletePost(params.postId);
     return { status: 204 };
-  }
+  },
 }));
