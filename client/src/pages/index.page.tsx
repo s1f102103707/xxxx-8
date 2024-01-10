@@ -1,4 +1,4 @@
-import type { PostModel } from '$/api/@types/models';
+import type { Post } from '$/api/@types';
 import { useAtom } from 'jotai';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useEffect, useState } from 'react';
@@ -10,7 +10,7 @@ import styles from './index.module.css';
 
 const Home = () => {
   const [user] = useAtom(userAtom);
-  const [posts, setPosts] = useState<PostModel[]>();
+  const [posts, setPosts] = useState<Post[]>();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -32,7 +32,9 @@ const Home = () => {
     e.preventDefault();
     if (!title || !content) return;
 
-    await apiClient.api.private.posts.$post({ body: { title, content, published: true, authorId: user.id } }).catch(returnNull);
+    await apiClient.api.private.posts
+      .$post({ body: { title, content, published: true, authorId: user.id } })
+      .catch(returnNull);
     setTitle('');
     setContent('');
     await fetchPosts();
@@ -51,20 +53,9 @@ const Home = () => {
         <div>
           {user && (
             <div>
-              <input
-                type="text"
-                placeholder="Title"
-                value={title}
-                onChange={inputTitle}
-              />
-              <textarea
-                placeholder="Content"
-                value={content}
-                onChange={inputContent}
-              ></textarea>
-              <button onClick={createPost}>
-                Create Post
-              </button>
+              <input type="text" placeholder="Title" value={title} onChange={inputTitle} />
+              <textarea placeholder="Content" value={content} onChange={inputContent} />
+              <button onClick={createPost}>Create Post</button>
             </div>
           )}
           {posts.map((post) => (
